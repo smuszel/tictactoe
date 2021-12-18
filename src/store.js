@@ -1,4 +1,5 @@
 import { createStore } from 'redux';
+import { getActivePlayerMark } from './selectors';
 
 const gameSize = [3, 3];
 
@@ -14,11 +15,7 @@ export default createStore((state = defaultState, action) => {
   switch (action.type) {
     case 'ADD_MARKING':
       const { x, y } = action.payload;
-      const nextSign =
-        state.flat().filter(tile => tile.marked === 'o').length >
-        state.flat().filter(tile => tile.marked === 'x').length
-          ? 'x'
-          : 'o';
+      const nextSign = getActivePlayerMark(state);
       const rowToUpdate = state.find((row, ix) => ix === x);
       const tileToUpdate = rowToUpdate.find((tile, ix) => ix === y);
       const updatedTile = { ...tileToUpdate, marked: nextSign };
