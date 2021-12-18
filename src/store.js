@@ -4,10 +4,10 @@ const gameSize = [3, 3];
 
 const defaultState = Array(gameSize[0])
   .fill()
-  .map(x =>
+  .map((_, x) =>
     Array(gameSize[1])
       .fill()
-      .map(y => ({ x, y, marked: false })),
+      .map((_, y) => ({ x, y, marked: false })),
   );
 
 export default createStore((state = defaultState, action) => {
