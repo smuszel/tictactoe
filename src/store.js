@@ -11,9 +11,9 @@ const defaultState = Array(gameSize[0])
   );
 
 export default createStore((state = defaultState, action) => {
-  const { x, y } = action.payload;
   switch (action.type) {
     case 'ADD_MARKING':
+      const { x, y } = action.payload;
       const nextSign =
         state.flat().filter(tile => tile.marked === 'o').length >
         state.flat().filter(tile => tile.marked === 'x').length
