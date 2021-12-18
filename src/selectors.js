@@ -15,7 +15,9 @@ export const getGameFinishedMark = state => {
     return horizontal || vertical || diagonal;
   };
 
-  return checkFinish('x') ? 'x' : checkFinish('o') ? 'o' : false;
+  const allDepleted = state.flat().every(tile => tile.marked);
+
+  return checkFinish('x') ? 'x' : checkFinish('o') ? 'o' : allDepleted ? 'none' : false;
 };
 
 export const getActivePlayerMark = state => {
