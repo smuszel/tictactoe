@@ -15,8 +15,8 @@ export default createStore((state = defaultState, action) => {
   switch (action.type) {
     case 'ADD_MARKING':
       const nextSign =
-        state.flat().filter(tile => tile.marked === 'o') >
-        state.flat().filter(tile => tile.marked === 'x')
+        state.flat().filter(tile => tile.marked === 'o').length >
+        state.flat().filter(tile => tile.marked === 'x').length
           ? 'x'
           : 'o';
       const rowToUpdate = state.find((row, ix) => ix === x);
